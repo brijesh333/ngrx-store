@@ -5,35 +5,35 @@ import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions';
 import { ITodo } from '../todo';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+    selector: 'app-todo-list',
+    templateUrl: './todo-list.component.html',
+    styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  @select() todos;
+    @select() todos;
 
-  model: ITodo = {
-    id: 0,
-    description: '',
-    responsible: '',
-    priority: 'low',
-    isCompleted: false
-  };
+    model: ITodo = {
+        id: 0,
+        description: '',
+        responsible: '',
+        priority: 'low',
+        isCompleted: false
+    };
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+    constructor(private ngRedux: NgRedux<IAppState>) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  obSubmit() {
-    this.ngRedux.dispatch({type: ADD_TODO, todo: this.model});
-  }
+    onSubmit() {
+        this.ngRedux.dispatch({ type: ADD_TODO, todo: this.model });
+    }
 
-  toggleTodo(todo) {
-    this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
-  }
+    toggleTodo(todo) {
+        this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
+    }
 
-  removeTodo(todo) {
-    this.ngRedux.dispatch({type: REMOVE_TODO, id: todo.id });
-  }
+    removeTodo(todo) {
+        this.ngRedux.dispatch({ type: REMOVE_TODO, id: todo.id });
+    }
 }
